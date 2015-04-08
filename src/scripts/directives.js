@@ -4,14 +4,9 @@ angular.module('feeds-directives', []).directive('feed', ['feedService', '$compi
   return  {
     restrict: 'E',
     scope: {
-      ngUrl: '=?',
       summary: '=summary'
     },
     controller: ['$scope', '$element', '$attrs', '$timeout', function ($scope, $element, $attrs, $timeout) {
-
-        if(typeof scope.ngUrl != "undefined")
-            $attrs.url = scope.ngUrl;
-
       $scope.$watch('finishedLoading', function (value) {
         if ($attrs.postRender && value) {
           $timeout(function () {
